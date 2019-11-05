@@ -27,8 +27,13 @@ function createCard(cardNum, posX, posY) {
     gameDev.appendChild(card);
 };
 
-
-    
     createCard(1,0,0),
     createCard(4,1,0);
     createCard(6,2,0);
+
+//You can also avoid hard-coding the size of the images and spacing
+// var cardSize = 100;
+// var cardSpacing = 10;
+
+// card.style.left = posX * (cardSize + cardSpacing) + cardSpacing + 'px';
+// card.style.top = posY * (cardSize + cardSpacing) + cardSpacing +'px';

@@ -5,10 +5,11 @@ var gameHeight = 4;
 var gameWidth = 4;
 var firstCard = null;
 var secondCard = null;
+var checkTimeout = null;
+var matches = 0;
 
 createGrid(gameHeight, gameWidth);
 function createGrid (gameHeight, gameWidth) {
-    //var cardArray = [0,0,1,1,2,2,3,3,4,4,5,5,6,6,7,7];
     var cardArray = [];
     for (var i = 0; i < (gameHeight * gameWidth) / 2; i++) {
      cardArray.push(i);
@@ -39,18 +40,21 @@ function createCard(cardNum, posX, posY) {
 };
 
 function clickCard(e) {
+    if (checkTimeout != null) {  // meaning that checkTimeout has been called
+        clearTimeout(checkTimeout);
+        checkCards();
+    } 
     var card = e.target;
     card.src = 'matchCards/card' + card.num + '.png';
 
     if (firstCard == null) {
-//      Copying the following line here prevents multiple quick clicks
-//      card.src = 'matchCards/card' + card.num + '.png';
         firstCard = card;
+    } else if (firstCard == card) {
+        firstCard.src = 'matchCards/cardback.png';
+        firstCard = null;
     } else if (secondCard == null) {
-//      Copying the following line here prevents multiple quick clicks
-//      card.src = 'matchCards/card' + card.num + '.png';
         secondCard = card;
-        setTimeout(checkCards, 1000);
+        checkTimeout = setTimeout(checkCards, 1000);
     }
 }
 
@@ -58,11 +62,21 @@ function checkCards() {
     if (firstCard.num == secondCard.num) {
         gameDev.removeChild(firstCard);
         gameDev.removeChild(secondCard);
+        matches++;
+        if (matches >= gameWidth * gameHeight / 2) {
+            gameWon();
+        }
     } else {
         firstCard.src = 'matchCards/cardback.png';
         secondCard.src = 'matchCards/cardback.png';
     }
     firstCard = null;
     secondCard = null;
+    checkTimeout = null;
+}
+
+function gameWon() {
+    //alert ("You won!");
+    document.getElementById('gameWin').style.visibility = 'visible';
 }
 

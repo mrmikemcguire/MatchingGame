@@ -46,16 +46,19 @@ function clickCard(e) {
         firstCard = card;
     } else if (secondCard == null) {
         secondCard = card;
-        if (firstCard.num == secondCard.num) {
-            gameDev.removeChild(firstCard);
-            gameDev.removeChild(secondCard);
-        } else {
-            firstCard.src = 'matchCards/cardback.png';
-            secondCard.src = 'matchCards/cardback.png';
-        }
-        firstCard = null;
-        secondCard = null;
+        setTimeout(checkCards, 1000);
     }
-
-
 }
+
+function checkCards() {
+    if (firstCard.num == secondCard.num) {
+        gameDev.removeChild(firstCard);
+        gameDev.removeChild(secondCard);
+    } else {
+        firstCard.src = 'matchCards/cardback.png';
+        secondCard.src = 'matchCards/cardback.png';
+    }
+    firstCard = null;
+    secondCard = null;
+}
+

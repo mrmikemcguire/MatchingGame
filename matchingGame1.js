@@ -1,7 +1,7 @@
-var gameDev = document.getElementById('matchingGame');
+let gameDev = document.getElementById('matchingGame');
 
 //creating and placing a single card
-// var card = document.createElement('img');
+// let card = document.createElement('img');
 // card.src = 'matchCards/card1.png';
 // card.style.position = 'absolute';
 // card.style.left = '10px';
@@ -14,7 +14,7 @@ var gameDev = document.getElementById('matchingGame');
 //createCard(1,120,10);
 
 function createCard(cardNum, posX, posY) {
-    var card = document.createElement('img');
+    let card = document.createElement('img');
     card.src = 'matchCards/card' + cardNum + '.png';
     card.style.position = 'absolute';
     // card.style.left = posX + 'px';
@@ -32,8 +32,8 @@ function createCard(cardNum, posX, posY) {
     createCard(6,2,0);
 
 //You can also avoid hard-coding the size of the images and spacing
-// var cardSize = 100;
-// var cardSpacing = 10;
+// let cardSize = 100;
+// let cardSpacing = 10;
 
 // card.style.left = posX * (cardSize + cardSpacing) + cardSpacing + 'px';
 // card.style.top = posY * (cardSize + cardSpacing) + cardSpacing +'px';

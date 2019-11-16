@@ -1,20 +1,20 @@
-var gameDev = document.getElementById('matchingGame');
-var cardSize = 100;
-var cardSpacing = 10;
-var gameHeight = 2;
-var gameWidth = 2;
+let gameDev = document.getElementById('matchingGame');
+let cardSize = 100;
+let cardSpacing = 10;
+let gameHeight = 2;
+let gameWidth = 2;
 
 createGrid(gameHeight, gameWidth);
 function createGrid (gameHeight, gameWidth) {
-    for (var row = 0; row < gameHeight; row++) {
-        for (var col = 0; col < gameWidth; col++) {
+    for (let row = 0; row < gameHeight; row++) {
+        for (let col = 0; col < gameWidth; col++) {
             createCard(0, row, col);
         }
     }
 }
 
 function createCard(cardNum, posX, posY) {
-    var card = document.createElement('img');
+    let card = document.createElement('img');
     card.src = 'matchCards/card' + cardNum + '.png';
     // card.src = 'matchCards/cardback.png';
     card.num = cardNum;
